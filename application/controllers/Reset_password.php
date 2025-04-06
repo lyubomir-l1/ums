@@ -14,11 +14,11 @@ class Reset_password extends CI_Controller{
             $user = $this->User_model->get_user_by_email($email);
     
             if ($user) {
-                // Създаваме токен
+                // Create token
                 $token = bin2hex(random_bytes(32));
                 $this->User_model->set_reset_token($email, $token);
     
-                // Симулираме изпращане на имейл (показваме линка на екрана)
+                // Simulation of sending an email (display the link)
                 $reset_link = site_url('reset_password/reset_password/' . $token);
                 echo "Reset password link: <a href='$reset_link'>Reset Link</a>";
             } else {
@@ -39,7 +39,7 @@ class Reset_password extends CI_Controller{
             show_error('Invalid or expired reset token.', 403);
         }
 
-        // Проверка за последно възстановяване на парола
+        // Last password reset check
     if ($user['last_password_reset']) {
         $last_reset_time = strtotime($user['last_password_reset']);
         $next_reset_time = strtotime('+1 day', $last_reset_time);
@@ -60,7 +60,7 @@ class Reset_password extends CI_Controller{
             $new_password = password_hash($this->input->post('new_password'), PASSWORD_DEFAULT);
             $this->User_model->update_password($user['id'], $new_password);
             $this->User_model->clear_reset_token($user['id']);
-            $this->User_model->update_last_password_reset($user['id']); // Обновява времето
+            $this->User_model->update_last_password_reset($user['id']); // reset the time
 
             //TODO: tracking functionality
             
@@ -86,7 +86,7 @@ class Reset_password extends CI_Controller{
             </a>';
         } else {
             $data['token'] = $token;
-            $title['title'] = "Register Page";
+            $title['title'] = "Reset password Page";
             $this->load->view('header', $title);
             $this->load->view('reset_password', $data);
             $this->load->view('footer');

@@ -22,10 +22,11 @@ class Register extends CI_Controller{
         $this->form_validation->set_rules('confirm_password', 'Confirm password', 'matches[password]');
 
         if($this->form_validation->run() == FALSE){
-           $data['title'] = "Register Page";
-           $this->load->view('header', $data);
-           $this->load->view('register');
-           $this->load->view('footer');
+        //    $data['title'] = "Register Page";
+        //    $this->load->view('header', $data);
+        //    $this->load->view('register');
+        //    $this->load->view('footer');
+        echo $this->register();
 
         }else{
             $email = $this->input->post('email');
