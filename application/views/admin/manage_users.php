@@ -44,5 +44,4 @@
         <a href="<?php echo site_url('tracker/display_users'); ?>" class="btn btn-primary">Tracking System</a>
         <?php } ?>
         <a href="<?php echo site_url('dashboard'); ?>" class="btn btn-primary">Back to Dashboard</a>
-        <a href="<?php echo site_url('logout/logout'); ?>" class="btn btn-secondary">Logout</a>
     </div>

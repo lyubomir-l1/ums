@@ -18,7 +18,6 @@ class Auth extends CI_Controller{
             if($user){
                 $this->session->set_userdata('user_id', $user['id']);
                 $this->session->set_userdata('username', $user['username']);
-
             }
         }
     }
@@ -40,6 +39,7 @@ class Auth extends CI_Controller{
             $data = ['message' => $message, 'username' => $username, 'user_info' => $user_info];
             $title['title'] = "Dashboard";
             $this->load->view('header', $title);
+            $this->load->view('navbar');
             $this->load->view('dashboard', $data);
             $this->load->view('footer');
             

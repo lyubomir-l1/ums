@@ -41,18 +41,3 @@
     <?php } else { ?>
         <p class="text-center text-muted">No user data found.</p>
     <?php } ?>
-
-    <div class="text-center mt-2 mb-4" >
-        <?php if ($this->session->userdata('permission_level') <= 3) { ?>
-            <a href="<?php echo site_url('admin/users'); ?>" class="btn btn-primary me-2">Manage Users</a>
-            <a href="<?php echo site_url('admin/view_tickets'); ?>" class="btn btn-primary me-2">View Tickets</a>
-        <?php } ?>
-
-        <?php if ($this->session->userdata('permission_level') <= 2) { ?>
-            <a href="<?php echo site_url('admin/create_ticket'); ?>" class="btn btn-success mt-2">Create Ticket</a>
-        <?php } ?>
-
-        <a href="<?php echo site_url('change_password/change_password'); ?>" class="btn btn-primary me-2">Change Password</a>
-        <a href="<?php echo site_url('logout/logout'); ?>" class="btn btn-secondary">Logout</a>
-        
-    </div>

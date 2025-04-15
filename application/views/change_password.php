@@ -1,3 +1,5 @@
+<?php $this->load->view('navbar'); ?>
+
 <div class="row justify-content-center">
     <div class="col-md-6">
     <h1 class="text-center">Change Own Password!</h1>

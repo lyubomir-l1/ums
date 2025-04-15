@@ -16,6 +16,7 @@ class Admin extends CI_Controller{
         $data['users'] = $this->User_model->get_all_users();
         $data['permission_level'] = $this->session->userdata('permission_level');
         $this->load->view('header', $title);
+        $this->load->view('navbar');
         $this->load->view('admin/manage_users', $data);
         $this->load->view('footer');
         
@@ -79,7 +80,7 @@ class Admin extends CI_Controller{
 
         } else {
             $data['user_id'] = $user_id;
-            $title['title'] = "Change Other User Pass";
+            $title['title'] = "Change Other User Email";
             $this->load->view('header', $title);
             $this->load->view('admin/change_email', $data);
             $this->load->view('footer');
