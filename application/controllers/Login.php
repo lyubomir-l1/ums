@@ -28,12 +28,12 @@
     
             $user = $this->User_model->get_user_by_email($email);
     
-             // Get IP address and browser info
+             
              $ip_address = $this->input->ip_address();
              $user_agent = $this->input->user_agent();
-             $browser_details = $this->get_browser_name($user_agent); // Getting browser details
+             $browser_details = $this->get_browser_name($user_agent); 
              $login_time = date('Y-m-d H:i:s');
-             $status = 'fail'; // Default status
+             $status = 'fail'; 
     
             if($user && password_verify($password, $user['password'])){
                 $this->session->set_userdata('user_id', $user['id']);
@@ -41,7 +41,7 @@
                 $this->session->set_userdata('permission_level', $user['permission_level']);
                 $this->session->set_flashdata('login_success', true);
                 $this->User_model->clear_lockout($email);
-                $status = 'success'; // Status change
+                $status = 'success'; 
     
                 if($remember_me){
                     $token = bin2hex(random_bytes(32));
@@ -57,9 +57,9 @@
                     $this->input->set_cookie($cookie);
                 }
     
-                // Record the login info in DB
+               
                 $this->User_model->log_user_login([
-                'user_id' => $user ? $user['id'] : null, // If no user -> set to NULL
+                'user_id' => $user ? $user['id'] : null, 
                 'ip_address' => $ip_address,
                 'browser_details' => $browser_details,
                 'status' => $status,
@@ -78,9 +78,9 @@
                 }
                 echo "Wrong password!";
             }
-            // Record the login info in DB, regardless of status
+            
             $this->User_model->log_user_login([
-                'user_id' => $user ? $user['id'] : 0, // If no user -> set to 0
+                'user_id' => $user ? $user['id'] : 0, 
                 'ip_address' => $ip_address,
                 'browser_details' => $browser_details,
                 'status' => $status,
