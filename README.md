@@ -55,6 +55,7 @@ It also includes a ticketing system and a tracking system for user actions.
 
 ## Installation
 1. Install [XAMPP](https://www.apachefriends.org/index.html).
+  I strongly recommend to install the XAMPP "xampp-windows-x64-7.4.33-0-VC15" version. Otherwise some non expected errors could appear!
 2. Start Apache and MySQL servers.
 3. Clone or download the project into your `htdocs` folder:
    ```sh
